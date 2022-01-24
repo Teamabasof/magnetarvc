@@ -1,0 +1,48 @@
+{
+    "name": "Magnetar Müzik Çalar",
+    "description": "Telegram'da bot gerektirmeyen tek bir hesap ile müzik çalan bir kod.",
+    "logo": "https://telegra.ph/file/b852e5f1fe1725cbc2a1e.jpg",
+    "keywords": [
+        "Music",
+        "Müzik Çalar",
+        "Telegram Bot",
+        "Magnetar Bot"
+    ],
+    "repository": "https://github.com/BirBeyfendi/magnetarvc",
+    "env": {
+        "STRING_SESSION": {
+            "description": "Müzik Çalmasını İstediğiniz Hesabın Pyrogram String Session'u",
+            "required": "true"
+        },
+        "API_HASH": {
+            "description": "my.telegram.org adresinden API HASH değerini alın.",
+            "required": "true"
+        },
+        "API_ID": {
+            "description": "my.telegram.org adresinden API ID değerini alın.",
+            "required": "true"
+        },
+        "OWNER_ID": {
+            "description": "Hesabın sahibinin telegramdaki kimliğini yapıştırın."
+            "required": "true"
+        },
+        "SUDO_USERS": {
+            "description": "Hesabı kontrol edebilmesini istediğiniz telegram kullanıcıların telegram kimlikleri."
+            "required": "true"
+    },
+    "addons": [],
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        },
+        {
+            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
