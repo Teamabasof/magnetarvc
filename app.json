@@ -29,6 +29,7 @@
         "SUDO_USERS": {
             "description": "Hesabı kontrol edebilmesini istediğiniz telegram kullanıcıların telegram kimlikleri.",
             "required": "true"
+        }
     },
     "addons": [],
     "buildpacks": [
