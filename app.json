@@ -6,7 +6,7 @@
   "repository": "https://github.com/BirBeyfendi/herteldenmuzik2",
   "stack": "container",
   "env": {
-    "STRING_SESSION": {
+        "STRING_SESSION": {
             "description": "Müzik Çalmasını İstediğiniz Hesabın Pyrogram String Session'u",
             "required": "true"
         },
