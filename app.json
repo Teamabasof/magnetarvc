@@ -8,7 +8,9 @@
         "Telegram Bot",
         "Magnetar Bot"
     ],
+    "website": "https://t.me/Bir_Beyfendi",
     "repository": "https://github.com/BirBeyfendi/magnetarvc",
+    "success_url": "https://t.me/HerTeldenBotlar",
     "env": {
         "STRING_SESSION": {
             "description": "Müzik Çalmasını İstediğiniz Hesabın Pyrogram String Session'u",
