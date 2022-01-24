@@ -1,5 +1,6 @@
 # @Bir_Beyfendi tarafından yapılmıştır.
 
+
 import os
 from pytgcalls import GroupCall
 import ffmpeg
@@ -13,9 +14,10 @@ DEFAULT_DOWNLOAD_DIR = 'downloads/vcbot/'
 api_id=Config.API_ID
 api_hash=Config.API_HASH
 session_name=Config.STRING_SESSION
-owner_id=Config.OWNER_ID
-sudo_users=Config.SUDO_USERS
-app = Client(session_name, api_id, api_hash, owner_id, sudo_users)
+OWNER_ID= Config.OWNER_ID
+SUDO_USERS = Config.SUDO_USERS
+
+app = Client(session_name, api_id, api_hash)
 
 
 self_or_contact_filter = filters.create(
@@ -31,9 +33,9 @@ self_or_contact_filter = filters.create(
 @app.on_message(filters.command('start') & self_or_contact_filter)
 async def start(client, message):
       if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
-      return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
+        return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
       else:
-      await message.reply("**Selam!** \n**Ben** `Magnetar Müzik Çalar` **Hesabıyım.** \n**Komutlarım Basittir.** \n\n**Komutlarım:** \n**Start, Ping, Baslat, Beklet, Sesekatil, Sestenayril** 🎵 \n\n**Keyifli Müzik Dinlemeler Dilerim Efendim.**")
+        await message.reply("**Selam!** \n**Ben** `Magnetar Müzik Çalar` **Hesabıyım.** \n**Komutlarım Basittir.** \n\n**Komutlarım:** \n**Start, Ping, Baslat, Beklet, Sesekatil, Sestenayril** 🎵 \n\n**Keyifli Müzik Dinlemeler Dilerim Efendim.**")
 
 # ping kontrolcüsü
 @app.on_message(filters.command('ping') & self_or_contact_filter)
@@ -41,10 +43,10 @@ async def ping(client, message):
     if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
       return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
     else:
-    start = datetime.now()
-    end = datetime.now()
-    m_s = (end - start).microseconds / 1000
-    await message.reply(f'**Ping:**\n `{m_s} ms`')
+        start = datetime.now()
+        end = datetime.now()
+        m_s = (end - start).microseconds / 1000
+        await message.reply(f'**Ping:**\n `{m_s} ms`')
 
 # sesleri oynatır ve durdurulan ses akışını devam ettirir
 @app.on_message(filters.command('baslat') & self_or_contact_filter)
@@ -52,12 +54,12 @@ async def play_track(client, message):
     if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
       return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
     else:
-    if not message.reply_to_message or not message.reply_to_message.audio:
-        return
-    input_filename = os.path.join(
-        client.workdir, DEFAULT_DOWNLOAD_DIR,
-        'input.raw',
-    )
+        if not message.reply_to_message or not message.reply_to_message.audio:
+            return
+        input_filename = os.path.join(
+            client.workdir, DEFAULT_DOWNLOAD_DIR,
+            'input.raw',
+        )
     audio = message.reply_to_message.audio
     audio_original = await message.reply_to_message.download()
     a = await message.reply('İndiriliyor...')
@@ -87,10 +89,10 @@ async def stop_playing(_, message):
     if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
       return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
     else:
-    group_call = VOICE_CHATS[message.chat.id]
-    group_call.stop_playout()
-    os.remove('downloads/vcbot/input.raw')
-    await message.reply('Şarkıyı Durdurdum ▶️')
+        group_call = VOICE_CHATS[message.chat.id]
+        group_call.stop_playout()
+        os.remove('downloads/vcbot/input.raw')
+        await message.reply('Şarkıyı Durdurdum ▶️')
 
 # sesli sohbete katılır
 @app.on_message(filters.command('sesekatil') & self_or_contact_filter)
@@ -98,7 +100,7 @@ async def join_voice_chat(client, message):
     if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
       return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
     else:
-    input_filename = os.path.join(
+        input_filename = os.path.join(
         client.workdir, DEFAULT_DOWNLOAD_DIR,
         'input.raw',
     )
@@ -121,11 +123,11 @@ async def leave_voice_chat(client, message):
     if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
       return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
     else:
-    chat_id = message.chat.id
-    group_call = VOICE_CHATS[chat_id]
-    await group_call.stop()
-    VOICE_CHATS.pop(chat_id, None)
-    await message.reply('Sesli sohbetten başarıyla ayrıldım ✅')
+        chat_id = message.chat.id
+        group_call = VOICE_CHATS[chat_id]
+        await group_call.stop()
+        VOICE_CHATS.pop(chat_id, None)
+        await message.reply('Sesli sohbetten başarıyla ayrıldım ✅')
 
 app.start()
 print('>>> MAGNETAR MÜZİK BAŞLATILDI <<<')
