@@ -1,11 +1,15 @@
 {
-  "name": "Magnetar Müzik Çalar",
-  "description": "Telegram'da bot gerektirmez ve tek bir hesap ile müzik çalar",
-  "logo": "https://telegra.ph/file/b852e5f1fe1725cbc2a1e.jpg",
-  "keywords": ["Music", "Müzik Çalar", "Telegram Bot", "Magnetar Bot"],
-  "repository": "https://github.com/BirBeyfendi/herteldenmuzik2",
-  "stack": "container",
-  "env": {
+    "name": "Magnetar Müzik Çalar",
+    "description": "Telegram'da bot gerektirmez ve tek bir hesap ile müzik çalar.",
+    "logo": "https://telegra.ph/file/b852e5f1fe1725cbc2a1e.jpg",
+    "keywords": [
+        "Music",
+        "Müzik Çalar",
+        "Telegram Bot",
+        "Magnetar Bot"
+    ],
+    "repository": "https://github.com/BirBeyfendi/magnetarvc",
+    "env": {
         "STRING_SESSION": {
             "description": "Müzik Çalmasını İstediğiniz Hesabın Pyrogram String Session'u",
             "required": "true"
@@ -19,12 +23,26 @@
             "required": "true"
         },
         "OWNER_ID": {
-            "description": "Hesabın sahibinin telegramdaki kimliğini yapıştırın.",
+            "description": "Hesabın sahibinin telegramdaki kimliğini yapıştırın."
             "required": "true"
         },
         "SUDO_USERS": {
-            "description": "Hesabı kontrol edebilmesini istediğiniz telegram kullanıcıların telegram kimlikleri.",
+            "description": "Hesabı kontrol edebilmesini istediğiniz telegram kullanıcıların telegram kimlikleri."
             "required": "true"
+    },
+    "addons": [],
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        },
+        {
+            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
     }
-  }
 }
