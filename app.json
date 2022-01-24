@@ -23,11 +23,11 @@
             "required": "true"
         },
         "OWNER_ID": {
-            "description": "Hesabın sahibinin telegramdaki kimliğini yapıştırın."
+            "description": "Hesabın sahibinin telegramdaki kimliğini yapıştırın.",
             "required": "true"
         },
         "SUDO_USERS": {
-            "description": "Hesabı kontrol edebilmesini istediğiniz telegram kullanıcıların telegram kimlikleri."
+            "description": "Hesabı kontrol edebilmesini istediğiniz telegram kullanıcıların telegram kimlikleri.",
             "required": "true"
     },
     "addons": [],
