@@ -10,7 +10,7 @@
     ],
     "repository": "https://github.com/BirBeyfendi/magnetarvc",
     "env": {
-        "STRING_SESSION": {
+        "SESSION_NAME": {
             "description": "Müzik Çalmasını İstediğiniz Hesabın Pyrogram String Session'u",
             "required": "true"
         },
