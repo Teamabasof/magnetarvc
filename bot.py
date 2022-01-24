@@ -31,7 +31,7 @@ self_or_contact_filter = filters.create(
 @app.on_message(filters.command('start') & self_or_contact_filter)
 async def start(client, message):
       if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
-      await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
+      return await message.reply(f"Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
       else:
       await message.reply("**Selam!** \n**Ben** `Magnetar Müzik Çalar` **Hesabıyım.** \n**Komutlarım Basittir.** \n\n**Komutlarım:** \n**Start, Ping, Baslat, Beklet, Sesekatil, Sestenayril** 🎵 \n\n**Keyifli Müzik Dinlemeler Dilerim Efendim.**")
 
