@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-    STRING_SESSION = os.environ.get("STRING_SESSION", "")
+    STRING_SESSION = getenv("STRING_SESSION", "")
 
     API_ID = int(getenv("API_ID"))
 
