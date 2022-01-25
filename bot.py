@@ -11,13 +11,13 @@ from pyrogram import filters, Client, idle
 VOICE_CHATS = {}
 DEFAULT_DOWNLOAD_DIR = 'downloads/vcbot/'
 
-api_id = Config.API_ID
-api_hash = Config.API_HASH
-session_name = Config.SESSION_NAME
+API_ID = Config.API_ID
+API_HASH = Config.API_HASH
+SESSION_NAME = Config.SESSION_NAME
 OWNER_ID = Config.OWNER_ID
 SUDO_USERS = Config.SUDO_USERS
 
-app = Client(session_name, api_id, api_hash)
+app = Client(SESSION_NAME, API_ID, API_HASH)
 
 
 self_or_contact_filter = filters.create(
@@ -35,7 +35,7 @@ async def start(client, message):
       if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
         return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
       else:
-        await message.reply("**Selam!** \n**Ben** `Magnetar Müzik Çalar` **Hesabıyım.** \n**Komutlarım Basittir.** \n\n**Komutlarım:** \n**Start, Ping, Baslat, Beklet, Sesekatil, Sestenayril** 🎵 \n\n**Keyifli Müzik Dinlemeler Dilerim Efendim.**")
+        await message.reply("**Selam!** \n**Ben** `Magnetar Müzik Çalar` **Hesabıyım.** \n**Komutlarım Basittir.** \n\n**Komutlarım:** \n**Start, Ping, Baslat, Beklet, Sesekatil, Sestenayril** 🎵 \n\nKendinize bir hesap oluşturmak isterseniz [buraya](https://github.com/BirBeyfendi/magnetarvc) tıklayın. \n**Keyifli Müzik Dinlemeler Dilerim Efendim.**")
 
 # ping kontrolcüsü
 @app.on_message(filters.command('ping') & self_or_contact_filter)
