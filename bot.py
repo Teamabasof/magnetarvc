@@ -4,20 +4,22 @@
 import os
 from pytgcalls import GroupCall
 import ffmpeg
-from config import API_ID, API_HASH, SESSION_NAME, OWNER_ID, SUDO_USERS
+from config import API_ID, API_HASH, STRING_SESSION, OWNER_ID, SUDO_USERS
 from datetime import datetime
 from pyrogram import filters, Client, idle
 
 VOICE_CHATS = {}
-DEFAULT_DOWNLOAD_DIR = 'downloads/vcbot/'
+DEFAULT_DOWNLOAD_DIR = 'indirme/magnetar/'
 
-API_ID = Config.API_ID
-API_HASH = Config.API_HASH
-SESSION_NAME = Config.SESSION_NAME
-OWNER_ID = Config.OWNER_ID
-SUDO_USERS = Config.SUDO_USERS
+# giriş
+api_id = API_ID
+api_hash = API_HASH
+session_name = STRING_SESSION
+owner_id = OWNER_ID
+sudo_users = SUDO_USERS
 
-app = Client(SESSION_NAME, API_ID, API_HASH)
+
+app = Client(session_name, api_id, api_hash, owner_id, sudo_users)
 
 
 self_or_contact_filter = filters.create(
@@ -32,7 +34,7 @@ self_or_contact_filter = filters.create(
 # start mesajı
 @app.on_message(filters.command('start') & self_or_contact_filter)
 async def start(client, message):
-      if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
+      if message.from_user.id not in sudo_users or message.from_user.id != owner_id:
         return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
       else:
         await message.reply("**Selam!** \n**Ben** `Magnetar Müzik Çalar` **Hesabıyım.** \n**Komutlarım Basittir.** \n\n**Komutlarım:** \n**Start, Ping, Baslat, Beklet, Sesekatil, Sestenayril** 🎵 \n\nKendinize bir hesap oluşturmak isterseniz [buraya](https://github.com/BirBeyfendi/magnetarvc) tıklayın. \n**Keyifli Müzik Dinlemeler Dilerim Efendim.**")
@@ -40,7 +42,7 @@ async def start(client, message):
 # ping kontrolcüsü
 @app.on_message(filters.command('ping') & self_or_contact_filter)
 async def ping(client, message):
-    if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
+    if message.from_user.id not in sudo_users or message.from_user.id != owner_id:
       return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
     else:
         start = datetime.now()
@@ -51,7 +53,7 @@ async def ping(client, message):
 # sesleri oynatır ve durdurulan ses akışını devam ettirir
 @app.on_message(filters.command('baslat') & self_or_contact_filter)
 async def play_track(client, message):
-    if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
+    if message.from_user.id not in sudo_users or message.from_user.id != owner_id:
       return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
     else:
         if not message.reply_to_message or not message.reply_to_message.audio:
@@ -86,7 +88,7 @@ async def play_track(client, message):
 # sesli sohbetteki müziği durdurur
 @app.on_message(filters.command('beklet') & self_or_contact_filter)
 async def stop_playing(_, message):
-    if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
+    if message.from_user.id not in sudo_users or message.from_user.id != owner_id:
       return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
     else:
         group_call = VOICE_CHATS[message.chat.id]
@@ -97,7 +99,7 @@ async def stop_playing(_, message):
 # sesli sohbete katılır
 @app.on_message(filters.command('sesekatil') & self_or_contact_filter)
 async def join_voice_chat(client, message):
-    if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
+    if message.from_user.id not in sudo_users or message.from_user.id != owner_id:
       return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
     else:
         input_filename = os.path.join(
@@ -120,7 +122,7 @@ async def join_voice_chat(client, message):
 # sesli sohbetten ayrılır
 @app.on_message(filters.command('sestenayril') & self_or_contact_filter)
 async def leave_voice_chat(client, message):
-    if message.from_user.id not in SUDO_USERS or message.from_user.id != OWNER_ID:
+    if message.from_user.id not in sudo_users or message.from_user.id != owner_id:
       return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
     else:
         chat_id = message.chat.id
