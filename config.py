@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-    SESSION_NAME = getenv("SESSION_NAME", "session")
+    STRING_SESSION = os.environ.get("STRING_SESSION", "")
 
     API_ID = int(getenv("API_ID"))
 
