@@ -3,3 +3,4 @@ pytgcalls
 asyncio
 tgcrypto
 ffmpeg-python
+python-dotenv
