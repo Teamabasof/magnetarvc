@@ -4,8 +4,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-    class Config(object):
-
     SESSION_NAME = getenv("SESSION_NAME", "session")
 
     API_ID = int(getenv("API_ID"))
