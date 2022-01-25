@@ -4,17 +4,17 @@
 import os
 from pytgcalls import GroupCall
 import ffmpeg
-from config import Config
+from config import API_ID, API_HASH, SESSION_NAME, OWNER_ID, SUDO_USERS
 from datetime import datetime
 from pyrogram import filters, Client, idle
 
 VOICE_CHATS = {}
 DEFAULT_DOWNLOAD_DIR = 'downloads/vcbot/'
 
-api_id=Config.API_ID
-api_hash=Config.API_HASH
-session_name=Config.STRING_SESSION
-OWNER_ID= Config.OWNER_ID
+api_id = Config.API_ID
+api_hash = Config.API_HASH
+session_name = Config.SESSION_NAME
+OWNER_ID = Config.OWNER_ID
 SUDO_USERS = Config.SUDO_USERS
 
 app = Client(session_name, api_id, api_hash)
