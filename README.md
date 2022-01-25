@@ -20,7 +20,7 @@
 <br> • Tek bir fake hesap yeterlidir.
 <br> • Olduğu gruplarda çalışır.
 <br> • Yöneticilik Yetkisine gerek yoktur.
-<br> • Bot sadece kuran kişiye aittir.
+<br> • Bot sadece kuran kişiye ve botu kullanma yetkisine sahip olan kişilere aittir.
 
 ## Komutlar
 <br> • `/start` - Hesabın çalışıp çalışmadığını kontrol eder
