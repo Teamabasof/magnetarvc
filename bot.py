@@ -37,7 +37,7 @@ async def start(client, message):
       if message.from_user.id not in sudo_users or message.from_user.id != owner_id:
         return await message.reply("Üzgünüm ama bu hesabı kullanamazsın. Kendine [buradan](https://github.com/BirBeyfendi/magnetarvc) bir hesap kurabilirsin!")
       else:
-        await message.reply("**Selam!** \n**Ben** `Magnetar Müzik Çalar` **Hesabıyım.** \n**Komutlarım Basittir.** \n\n**Komutlarım:** \n**Start, Ping, Baslat, Beklet, Sesekatil, Sestenayril** 🎵 \n\nKendinize bir hesap oluşturmak isterseniz [buraya](https://github.com/BirBeyfendi/magnetarvc) tıklayın. \n**Keyifli Müzik Dinlemeler Dilerim Efendim.**")
+        await message.reply("**Selam!** \n**Ben** `THEMUSICI Müzik Çalar` **Hesabıyım.** \n**Komutlarım Basittir.** \n\n**Komutlarım:** \n**Start, Ping, Baslat, Beklet, Sesekatil, Sestenayril** 🎵 \n\nKendinize bir hesap oluşturmak isterseniz [buraya](https://github.com/BirBeyfendi/magnetarvc) tıklayın. \n**Keyifli Müzik Dinlemeler Dilerim Efendim.**")
 
 # ping kontrolcüsü
 @app.on_message(filters.command('ping') & self_or_contact_filter)
@@ -73,7 +73,7 @@ async def play_track(client, message):
     ).overwrite_output().run()
     os.remove(audio_original)
     if VOICE_CHATS and message.chat.id in VOICE_CHATS:
-        text = f'▶️ Şu an {message.chat.title} grubunda **{audio.title}** müziği `Magnetar Müzik Çalar` tarafından oynatılıyor...'
+        text = f'▶️ Şu an {message.chat.title} grubunda **{audio.title}** müziği `THEMUSICI Müzik Çalar` tarafından oynatılıyor...'
     else:
         try:
             group_call = GroupCall(client, input_filename)
@@ -83,7 +83,7 @@ async def play_track(client, message):
             return
         VOICE_CHATS[message.chat.id] = group_call
     await a.delete()
-    await message.reply(f'▶️ Şu an {message.chat.title} grubunda **{audio.title}** müziği `Magnetar Müzik Çalar` tarafından oynatılıyor...')
+    await message.reply(f'▶️ Şu an {message.chat.title} grubunda **{audio.title}** müziği `THEMUSICI Müzik Çalar` tarafından oynatılıyor...')
 
 # sesli sohbetteki müziği durdurur
 @app.on_message(filters.command('beklet') & self_or_contact_filter)
@@ -132,7 +132,7 @@ async def leave_voice_chat(client, message):
         await message.reply('Sesli sohbetten başarıyla ayrıldım ✅')
 
 app.start()
-print('>>> MAGNETAR MÜZİK BAŞLATILDI <<<')
+print('>>> THEMUSICI MÜZİK BAŞLATILDI <<<')
 idle()
 app.stop()
-print('\n>>> MAGNETAR MÜZİK DURDURULDU <<<')
+print('\n>>> THEMUSICI MÜZİK DURDURULDU <<<')
